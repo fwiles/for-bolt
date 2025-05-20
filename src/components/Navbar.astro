@@ -1,0 +1,234 @@
+---
+import { Button } from '@/components/ui/button';
+import { Phone, Calendar } from 'lucide-react';
+import SimpleBookingForm from './SimpleBookingForm.astro';
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-30 transition-all duration-300 bg-transparent py-4"
+  id="navbar"
+>
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="#hero" class="flex items-center">
+      <span class="text-navy font-serif font-bold text-xl md:text-2xl">
+        Carter Legacy Planning
+      </span>
+    </a>
+
+    <!-- Desktop navigation -->
+    <div class="hidden lg:flex items-center space-x-1">
+      <a
+        href="#hero"
+        class="px-3 py-2 text-sm text-slate hover:text-navy font-medium transition-colors"
+      >
+        Home
+      </a>
+      <a
+        href="#plans"
+        class="px-3 py-2 text-sm text-slate hover:text-navy font-medium transition-colors"
+      >
+        Plan Options
+      </a>
+      <a
+        href="#documents"
+        class="px-3 py-2 text-sm text-slate hover:text-navy font-medium transition-colors"
+      >
+        Core Documents
+      </a>
+      <a
+        href="#states"
+        class="px-3 py-2 text-sm text-slate hover:text-navy font-medium transition-colors"
+      >
+        State-Specific
+      </a>
+      <a
+        href="#faqs"
+        class="px-3 py-2 text-sm text-slate hover:text-navy font-medium transition-colors"
+      >
+        FAQs
+      </a>
+      <a
+        href="#process"
+        class="px-3 py-2 text-sm text-slate hover:text-navy font-medium transition-colors"
+      >
+        Process
+      </a>
+      <a
+        href="#testimonials"
+        class="px-3 py-2 text-sm text-slate hover:text-navy font-medium transition-colors"
+      >
+        Testimonials
+      </a>
+      
+      <div class="ml-4 flex items-center space-x-2">
+        <Button asChild size="sm" variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white">
+          <a href="tel:+19154975755">
+            <Phone className="mr-1 h-4 w-4" /> Call Now
+          </a>
+        </Button>
+        <Button 
+          size="sm" 
+          className="bg-navy text-white hover:bg-navy/90"
+          id="open-booking-modal"
+        >
+          <Calendar className="mr-1 h-4 w-4" /> Book Consult
+        </Button>
+      </div>
+    </div>
+
+    <!-- Mobile menu button -->
+    <div class="lg:hidden">
+      <button
+        id="mobile-menu-button"
+        class="text-navy p-2"
+        aria-label="Open mobile menu"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16" id="hamburger-icon"></path>
+          <path d="M6 18L18 6M6 6l12 12" id="close-icon" class="hidden"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden bg-white border-t hidden">
+    <div class="container mx-auto py-3 space-y-1">
+      <a
+        href="#hero"
+        class="block px-3 py-2 text-navy font-medium hover:bg-cream mobile-menu-link"
+      >
+        Home
+      </a>
+      <a
+        href="#plans"
+        class="block px-3 py-2 text-navy font-medium hover:bg-cream mobile-menu-link"
+      >
+        Plan Options
+      </a>
+      <a
+        href="#documents"
+        class="block px-3 py-2 text-navy font-medium hover:bg-cream mobile-menu-link"
+      >
+        Core Documents
+      </a>
+      <a
+        href="#states"
+        class="block px-3 py-2 text-navy font-medium hover:bg-cream mobile-menu-link"
+      >
+        State-Specific
+      </a>
+      <a
+        href="#faqs"
+        class="block px-3 py-2 text-navy font-medium hover:bg-cream mobile-menu-link"
+      >
+        FAQs
+      </a>
+      <a
+        href="#process"
+        class="block px-3 py-2 text-navy font-medium hover:bg-cream mobile-menu-link"
+      >
+        Process
+      </a>
+      <a
+        href="#testimonials"
+        class="block px-3 py-2 text-navy font-medium hover:bg-cream mobile-menu-link"
+      >
+        Testimonials
+      </a>
+      <div class="flex flex-col space-y-2 pt-2">
+        <Button asChild variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white w-full">
+          <a href="tel:+19154975755">
+            <Phone className="mr-2 h-4 w-4" /> Call Now
+          </a>
+        </Button>
+        <Button 
+          className="bg-navy text-white hover:bg-navy/90 w-full"
+          id="mobile-open-booking-modal"
+        >
+          <Calendar className="mr-2 h-4 w-4" /> Book Free Consult
+        </Button>
+      </div>
+    </div>
+  </div>
+
+  <SimpleBookingForm />
+</nav>
+
+<script>
+  // Handle navbar scroll effect
+  function handleScroll() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      navbar?.classList.remove('bg-transparent', 'py-4');
+      navbar?.classList.add('bg-white', 'shadow-md', 'py-2');
+    } else {
+      navbar?.classList.remove('bg-white', 'shadow-md', 'py-2');
+      navbar?.classList.add('bg-transparent', 'py-4');
+    }
+  }
+
+  // Mobile menu toggle
+  function setupMobileMenu() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+    
+    mobileMenuButton?.addEventListener('click', () => {
+      mobileMenu?.classList.toggle('hidden');
+      hamburgerIcon?.classList.toggle('hidden');
+      closeIcon?.classList.toggle('hidden');
+    });
+    
+    // Close mobile menu when a link is clicked
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu?.classList.add('hidden');
+        hamburgerIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
+      });
+    });
+  }
+
+  // Modal handling
+  function setupModalButtons() {
+    const openModalButton = document.getElementById('open-booking-modal');
+    const mobileOpenModalButton = document.getElementById('mobile-open-booking-modal');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+    
+    // Custom event to open modal from Astro component
+    const openModalEvent = new CustomEvent('openBookingModal');
+    
+    openModalButton?.addEventListener('click', () => {
+      document.dispatchEvent(openModalEvent);
+    });
+    
+    mobileOpenModalButton?.addEventListener('click', () => {
+      document.dispatchEvent(openModalEvent);
+      // Close mobile menu
+      mobileMenu?.classList.add('hidden');
+      hamburgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    });
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call once to set initial state
+    setupMobileMenu();
+    setupModalButtons();
+  });
+</script>

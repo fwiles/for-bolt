@@ -1,0 +1,332 @@
+---
+---
+
+<div id="booking-form-modal" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/80" id="booking-form-overlay"></div>
+  
+  <div class="fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg sm:rounded-lg md:max-w-lg">
+    <!-- Close button -->
+    <button type="button" class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2" id="close-booking-form">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+      <span class="sr-only">Close</span>
+    </button>
+    
+    <!-- Header -->
+    <div class="flex flex-col space-y-2 text-center sm:text-left">
+      <h3 class="text-2xl font-serif text-center">Book Your Free 20 Min Consult!</h3>
+      <p class="text-center text-slate">
+        Fill out the form below and we'll get back to you shortly to schedule your consultation.
+      </p>
+    </div>
+    
+    <!-- Form -->
+    <form id="booking-consultation-form" class="space-y-4 py-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="space-y-2">
+          <label for="firstName" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">First Name</label>
+          <input 
+            type="text" 
+            id="firstName" 
+            name="firstName" 
+            placeholder="John" 
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+            required
+          />
+          <p class="text-sm font-medium text-destructive hidden" id="firstName-error"></p>
+        </div>
+        
+        <div class="space-y-2">
+          <label for="lastName" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Last Name</label>
+          <input 
+            type="text" 
+            id="lastName" 
+            name="lastName" 
+            placeholder="Doe" 
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+            required
+          />
+          <p class="text-sm font-medium text-destructive hidden" id="lastName-error"></p>
+        </div>
+      </div>
+      
+      <div class="space-y-2">
+        <label for="email" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="you@example.com" 
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+          required
+        />
+        <p class="text-sm font-medium text-destructive hidden" id="email-error"></p>
+      </div>
+      
+      <div class="space-y-2">
+        <label for="phone" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Phone Number</label>
+        <input 
+          type="tel" 
+          id="phone" 
+          name="phone" 
+          placeholder="(555) 555-5555" 
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+          required
+        />
+        <p class="text-sm font-medium text-destructive hidden" id="phone-error"></p>
+      </div>
+      
+      <div class="space-y-3">
+        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">What plan are you interested in?</label>
+        
+        <div class="flex flex-col space-y-1">
+          <div class="flex items-center space-x-3 space-y-0">
+            <input 
+              type="radio" 
+              id="plan-basic" 
+              name="planInterest" 
+              value="Basic Will Plan $1,500"
+              class="h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              checked
+            />
+            <label for="plan-basic" class="font-normal cursor-pointer">
+              Basic Will Plan $1,500
+            </label>
+          </div>
+          
+          <div class="flex items-center space-x-3 space-y-0">
+            <input 
+              type="radio" 
+              id="plan-trust" 
+              name="planInterest" 
+              value="Living Trust Plan $3,500 / $4,500"
+              class="h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            />
+            <label for="plan-trust" class="font-normal cursor-pointer">
+              Living Trust Plan $3,500 / $4,500
+            </label>
+          </div>
+          
+          <div class="flex items-center space-x-3 space-y-0">
+            <input 
+              type="radio" 
+              id="plan-advanced" 
+              name="planInterest" 
+              value="Advanced Planning Plan $6,500"
+              class="h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            />
+            <label for="plan-advanced" class="font-normal cursor-pointer">
+              Advanced Planning Plan $6,500
+            </label>
+          </div>
+          
+          <div class="flex items-center space-x-3 space-y-0">
+            <input 
+              type="radio" 
+              id="plan-custom" 
+              name="planInterest" 
+              value="Something custom / I have more questions"
+              class="h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            />
+            <label for="plan-custom" class="font-normal cursor-pointer">
+              Something custom / I have more questions
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <button 
+        type="submit" 
+        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-10 px-4 py-2 w-full bg-navy text-white hover:bg-navy/90"
+        id="submit-booking-form"
+      >
+        <span id="submit-button-text">Book Your Free Consultation</span>
+        <span id="submit-spinner" class="hidden">
+          <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Form validation and submission
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('booking-form-modal');
+    const overlay = document.getElementById('booking-form-overlay');
+    const closeButton = document.getElementById('close-booking-form');
+    const form = document.getElementById('booking-consultation-form');
+    const submitButton = document.getElementById('submit-booking-form');
+    const submitButtonText = document.getElementById('submit-button-text');
+    const submitSpinner = document.getElementById('submit-spinner');
+    
+    // Format phone number as user types
+    const phoneInput = document.getElementById('phone');
+    phoneInput?.addEventListener('input', (e) => {
+      const input = e.target as HTMLInputElement;
+      // Remove all non-digits
+      const digits = input.value.replace(/\D/g, "");
+      
+      if (digits.length <= 3) {
+        input.value = digits;
+      } else if (digits.length <= 6) {
+        input.value = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+      } else {
+        input.value = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+      }
+    });
+    
+    // Open modal when custom event is triggered
+    document.addEventListener('openBookingModal', () => {
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+      }
+    });
+    
+    // Close modal when clicking overlay or close button
+    overlay?.addEventListener('click', () => {
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // Re-enable scrolling
+      }
+    });
+    
+    closeButton?.addEventListener('click', () => {
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // Re-enable scrolling
+      }
+    });
+    
+    // Prevent clicks inside the modal from closing it
+    modal?.querySelector('div:nth-child(2)')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+    
+    // Form validation and submission
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(form as HTMLFormElement);
+      const firstName = formData.get('firstName') as string;
+      const lastName = formData.get('lastName') as string;
+      const email = formData.get('email') as string;
+      const phone = formData.get('phone') as string;
+      const planInterest = formData.get('planInterest') as string;
+      
+      // Simple validation
+      let isValid = true;
+      
+      // First name validation
+      if (!firstName.trim()) {
+        showError('firstName', 'First name is required');
+        isValid = false;
+      } else {
+        hideError('firstName');
+      }
+      
+      // Last name validation
+      if (!lastName.trim()) {
+        showError('lastName', 'Last name is required');
+        isValid = false;
+      } else {
+        hideError('lastName');
+      }
+      
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email.trim() || !emailRegex.test(email)) {
+        showError('email', 'Please enter a valid email address');
+        isValid = false;
+      } else {
+        hideError('email');
+      }
+      
+      // Phone validation
+      const phoneDigits = phone.replace(/\D/g, "");
+      if (phoneDigits.length < 10) {
+        showError('phone', 'Please enter a valid phone number');
+        isValid = false;
+      } else {
+        hideError('phone');
+      }
+      
+      if (!isValid) return;
+      
+      // Show loading state
+      if (submitButton && submitButtonText && submitSpinner) {
+        submitButton.disabled = true;
+        submitButtonText.textContent = 'Submitting...';
+        submitSpinner.classList.remove('hidden');
+      }
+      
+      try {
+        // Submit form to webhook
+        const response = await fetch('https://hooks.zapier.com/hooks/catch/9158387/27piuv8/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          mode: 'no-cors', // Handle CORS
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            phone,
+            planInterest,
+            timestamp: new Date().toISOString(),
+            source: window.location.href,
+          }),
+        });
+        
+        // Since using no-cors, we won't get a proper response status
+        // Redirect to the thank you page
+        window.location.href = '/thank-you';
+        
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('Something went wrong. Please try again or call us directly.');
+      } finally {
+        // Reset loading state
+        if (submitButton && submitButtonText && submitSpinner) {
+          submitButton.disabled = false;
+          submitButtonText.textContent = 'Book Your Free Consultation';
+          submitSpinner.classList.add('hidden');
+        }
+      }
+    });
+    
+    // Helper functions for form validation
+    function showError(fieldId: string, message: string) {
+      const errorElement = document.getElementById(`${fieldId}-error`);
+      if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.classList.remove('hidden');
+      }
+      
+      const inputElement = document.getElementById(fieldId);
+      if (inputElement) {
+        inputElement.classList.add('border-destructive');
+      }
+    }
+    
+    function hideError(fieldId: string) {
+      const errorElement = document.getElementById(`${fieldId}-error`);
+      if (errorElement) {
+        errorElement.classList.add('hidden');
+      }
+      
+      const inputElement = document.getElementById(fieldId);
+      if (inputElement) {
+        inputElement.classList.remove('border-destructive');
+      }
+    }
+  });
+</script>
